@@ -35,6 +35,7 @@ libraryDependencies ++= {
     "com.danielasfregola" %% "random-data-generator" % RandomDataGenerator % "test",
     // https://github.com/krasserm/streamz
     "com.github.krasserm" %% "streamz-converter" % "0.9-M1" // uses FS2 0.9.5
+    // "io.packagecloud.maven.wagon" % "maven-packagecloud-wagon" % "0.0.6"
   )
 }
 
@@ -96,3 +97,16 @@ lazy val root = Project(
   base = file("."),
   settings = standardSettings ++ coverageSettings ++ site.settings ++ site.includeScaladoc(version + "/api")
       ++ site.includeScaladoc("latest/api") ++ ghpages.settings)
+
+
+// https://packagecloud.io/docs#sbt_deploy
+
+// import aether.AetherKeys._
+
+// credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+
+// aetherWagons := Seq(aether.WagonWrapper("packagecloud+https", "io.packagecloud.maven.wagon.PackagecloudWagon"))
+
+// publishTo := {
+//   Some("packagecloud+https" at "packagecloud+https://packagecloud.io/peterbecich/twitter4s")
+// }
