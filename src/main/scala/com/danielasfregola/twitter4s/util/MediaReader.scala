@@ -2,7 +2,7 @@ package com.danielasfregola.twitter4s.util
 
 import java.io.InputStream
 
-import scala.concurrent.ExecutionContext
+// import scala.concurrent.ExecutionContext
 
 private[twitter4s] final case class Chunk(base64Data: Seq[String])
 

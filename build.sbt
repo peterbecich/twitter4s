@@ -26,6 +26,7 @@ libraryDependencies ++= {
     "com.typesafe" % "config" % Typesafe,
     "com.typesafe.akka" %% "akka-http" % AkkaHttp,
     "de.heikoseeberger" %% "akka-http-json4s" % AkkaHttpJson4s,
+    "de.heikoseeberger" %% "akka-http-circe" % AkkaHttpJson4s,
     "org.json4s" %% "json4s-native" % Json4s,
     "org.json4s" %% "json4s-ext" % Json4s,
     "com.typesafe.scala-logging" %% "scala-logging" % ScalaLogging,

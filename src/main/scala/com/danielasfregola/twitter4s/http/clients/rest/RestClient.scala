@@ -4,7 +4,9 @@ import java.util.UUID
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
+// import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.stream.{ActorMaterializer, Materializer}
+import de.heikoseeberger.akkahttpjson4s.Json4sSupport.unmarshaller
 import com.danielasfregola.twitter4s.entities.{AccessToken, ConsumerToken, RatedData}
 import com.danielasfregola.twitter4s.http.clients.Client
 import com.danielasfregola.twitter4s.http.oauth.OAuth2Provider
@@ -64,7 +66,7 @@ private[twitter4s] class RestClient(val consumerToken: ConsumerToken, val access
                                 (implicit system: ActorSystem, materializer: Materializer): Future[T] = {
     // implicit val ec = materializer.executionContext
     // implicit val jsonSerialization = serialization
-    sendAndReceive(httpRequest, response => json4sUnmarshaller[T].apply(response.entity))
+    sendAndReceive(httpRequest, response => unmarshaller[T].apply(response.entity))
   }
 
   def sendReceiveAsRated[T: Manifest](httpRequest: HttpRequest)
@@ -73,7 +75,7 @@ private[twitter4s] class RestClient(val consumerToken: ConsumerToken, val access
     // implicit val jsonSerialization = serialization
     val unmarshallRated: HttpResponse => Future[RatedData[T]] = { response =>
       // val rate = RateLimit(response.headers)
-      val data = json4sUnmarshaller[T].apply(response.entity)
+      val data = unmarshaller[T].apply(response.entity)
       data.map(d => RatedData(rate, d))
     }
     sendAndReceive(httpRequest, unmarshallRated)
