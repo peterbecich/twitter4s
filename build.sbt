@@ -3,7 +3,7 @@ import com.typesafe.sbt.SbtGit.{GitKeys => git}
 name := "twitter4s"
 version := "5.4-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.4"
 
 resolvers ++= Seq(
   "Sonatype Releases" at "https://oss.sonatype.org/content/repositories/releases/",
@@ -13,12 +13,12 @@ resolvers ++= Seq(
 
 libraryDependencies ++= {
 
-  val Typesafe = "1.3.1"
+  val Typesafe = "1.3.2"
   val Akka = "2.4.16"
   val AkkaHttp = "10.0.1"
   val AkkaHttpJson4s = "1.11.0"
   val Json4s = "3.5.0"
-  val Specs2 = "3.8.6"
+  val Specs2 = "4.0.2"
   val ScalaLogging = "3.5.0"
   val RandomDataGenerator = "2.3"
 
@@ -34,8 +34,8 @@ libraryDependencies ++= {
     "com.typesafe.akka" %% "akka-testkit" % Akka % "test",
     "com.danielasfregola" %% "random-data-generator" % RandomDataGenerator % "test",
     // https://github.com/krasserm/streamz
-    "com.github.krasserm" %% "streamz-converter" % "0.9-M1" // uses FS2 0.9.5
-    // "io.packagecloud.maven.wagon" % "maven-packagecloud-wagon" % "0.0.6"
+    "com.github.krasserm" %% "streamz-converter" % "0.9-M1", // uses FS2 0.9.5
+    "io.packagecloud.maven.wagon" % "maven-packagecloud-wagon" % "0.0.6"
   )
 }
 
@@ -53,7 +53,7 @@ lazy val standardSettings = Seq(
     ScmInfo(url("https://github.com/DanielaSfregola/twitter4s"),
             "scm:git:git@github.com:DanielaSfregola/twitter4s.git")),
   apiURL := Some(url("http://DanielaSfregola.github.io/twitter4s/latest/api/")),
-  crossScalaVersions := Seq("2.12.1", "2.11.8"),
+  // crossScalaVersions := Seq("2.12.1", "2.11.8"),
   pomExtra := (
     <developers>
     <developer>
@@ -103,7 +103,7 @@ lazy val root = Project(
 
 // import aether.AetherKeys._
 
-// credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
 // aetherWagons := Seq(aether.WagonWrapper("packagecloud+https", "io.packagecloud.maven.wagon.PackagecloudWagon"))
 
