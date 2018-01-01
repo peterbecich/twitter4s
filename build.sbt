@@ -37,8 +37,8 @@ libraryDependencies ++= {
     // https://github.com/krasserm/streamz
     // "com.github.krasserm" %% "streamz-converter" % "0.9-M1", // uses FS2 0.10.0-M3
     "co.fs2" %% "fs2-core" % "0.10.0-M10",
-    "org.typelevel" %% "cats-core" % "1.0.0"
-    // "io.packagecloud.maven.wagon" % "maven-packagecloud-wagon" % "0.0.6"
+    "org.typelevel" %% "cats-core" % "1.0.0",
+    "io.packagecloud.maven.wagon" % "maven-packagecloud-wagon" % "0.0.6"
   )
 }
 
@@ -106,12 +106,12 @@ lazy val root = Project(
 
 // https://packagecloud.io/docs#sbt_deploy
 
-// import aether.AetherKeys._
+import aether.AetherKeys._
 
-// credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
+credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
 // aetherWagons := Seq(aether.WagonWrapper("packagecloud+https", "io.packagecloud.maven.wagon.PackagecloudWagon"))
 
-// publishTo := {
-//   Some("packagecloud+https" at "packagecloud+https://packagecloud.io/peterbecich/twitter4s")
-// }
+publishTo := {
+  Some("packagecloud+https" at "packagecloud+https://packagecloud.io/peterbecich/twitter4s")
+}
